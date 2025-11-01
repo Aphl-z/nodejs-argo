@@ -37,9 +37,9 @@ jobs:
         with:
           context: .
           push: true
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm64  
           tags: |
-            ghcr.io/aphl-z/zeabur:2659                                                                           
+            ghcr.io/aphl-z/render:2659                                                                                 
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}        
             org.opencontainers.image.description=HTTP Server
