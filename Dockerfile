@@ -1,15 +1,18 @@
-FROM node:alpine3.20
+# 基础镜像
+FROM node:24-alpine
 
-WORKDIR /tmp
+# 工作目录
+WORKDIR /app
 
-COPY . .
+# 复制代码
+COPY server.js /app/server.js
+COPY package*.json /app/
 
-EXPOSE 3000/tcp
+# 安装依赖
+RUN npm install --production
 
-RUN apk update && apk upgrade &&\
-    apk add --no-cache openssl curl gcompat iproute2 coreutils &&\
-    apk add --no-cache bash &&\
-    chmod +x index.js &&\
-    npm install
+# 暴露端口
+EXPOSE 3000
 
-CMD ["node", "index.js"]
+# 启动命令
+CMD ["node", "server.js"]
