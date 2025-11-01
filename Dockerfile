@@ -5,8 +5,9 @@ FROM node:24-alpine
 WORKDIR /app
 
 # 复制代码
-COPY server.js /app/server.js
-COPY package*.json /app/
+COPY index.js /app/index.js
+CMD ["node", "/app/index.js"]
+  
 
 # 安装依赖
 RUN npm install --production
